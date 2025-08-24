@@ -11,7 +11,11 @@
 .train-container {
   background-color: #f00;
   position: absolute;
-  inset: 0;
+  height: 100vh;
+  left: 50%;
+  width: 500px;
+  transform: translateX(-50%);
+  overflow: hidden;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -19,6 +23,6 @@
   gap: 10px;
 
   .train {
-    background-color: #0f0;
+    background-color: #00f;
   }
 }
