@@ -1,4 +1,17 @@
 @use 'sass:math';
+@use 'sass:list';
+
+$animation_time: 18s;
+$animation_delay: 0s;
+$train_height: 300px;
+$train_size: 500px;
+$trains: l, r, m, r, l;
+// $trains: l, l, r, m, lm, l, l, r, m, l, l, lm, r;
+:root {
+  --train-l: black;
+  --train-m: black;
+  --train-r: black;
+}
 
 *,
 *::before,
@@ -8,21 +21,167 @@
   box-sizing: border-box;
 }
 
-.train-container {
-  background-color: #f00;
+body {
+  animation: $animation_time linear;
+  animation-name: c-l, c-m, c-r;
+  animation-delay: $animation_delay;
+}
+
+@keyframes c-l {
+  @for $i from 1 through length($trains) {
+    $train: nth($trains, $i);
+    $percentage: math.div(100, length($trains)) * ($i - 1);
+    $percentage-2: math.div(100, length($trains)) * $i;
+    #{$percentage}%,
+    #{$percentage-2}% {
+      @if $train == l {
+        --train-l: blue;
+      } @else if $train == lm {
+        --train-l: blue;
+      } @else if $train == lr {
+        --train-l: blue;
+      } @else {
+        --train-l: black;
+      }
+    }
+  }
+}
+
+@keyframes c-m {
+  @for $i from 1 through list.length($trains) {
+    $train: nth($trains, $i);
+    $percentage: math.div(100, list.length($trains)) * ($i - 1);
+    $percentage-2: math.div(100, list.length($trains)) * $i;
+    #{$percentage}%,
+    #{$percentage-2}% {
+      @if $train == m {
+        --train-m: blue;
+      } @else if $train == lm {
+        --train-m: blue;
+      } @else if $train == mr {
+        --train-m: blue;
+      } @else {
+        --train-m: black;
+      }
+    }
+  }
+}
+
+@keyframes c-r {
+  @for $i from 1 through list.length($trains) {
+    $train: nth($trains, $i);
+    $percentage: math.div(100, list.length($trains)) * ($i - 1);
+    $percentage-2: math.div(100, list.length($trains)) * $i;
+    #{$percentage}%,
+    #{$percentage-2}% {
+      @if $train == r {
+        --train-r: blue;
+      } @else if $train == lr {
+        --train-r: blue;
+      } @else if $train == rl {
+        --train-r: blue;
+      } @else {
+        --train-r: black;
+      }
+    }
+  }
+}
+
+.tester-l {
   position: absolute;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: var(--train-l);
+}
+
+.tester-m {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: var(--train-m);
+}
+
+.tester-r {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  width: 100px;
+  height: 100px;
+  background-color: var(--train-r);
+}
+
+.test-display {
+  position: absolute;
+  height: 80vh;
+  width: 80vw;
+  background-color: black;
+  opacity: 0.5;
+  top: 50%;
   left: 50%;
-  width: 500px;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: none; // hide by default
+}
+
+@container style(--train-l: pink) {
+  .test-display {
+    display: block;
+  }
+}
+
+@keyframes train-animation {
+  0% {
+    transform: translateY(
+      $train_size + $train_height * -1 * list.length($trains)
+    );
+  }
+
+  100% {
+    transform: translateY($train_size);
+  }
+}
+
+.train-container {
+  background-color: blueviolet;
+  position: absolute;
+  height: $train_size;
+  width: $train_size;
+  top: 50%;
+  left: 50%;
   overflow: hidden;
+  transform: translate(-50%, -50%);
+  // overflow: hidden;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(auto-fit, 100px);
-  gap: 10px;
+  .train-inner {
+    animation: train-animation $animation_time linear forwards;
+    animation-delay: $animation_delay;
 
-  .train {
-    background-color: #00f;
+    .train-row {
+      display: grid;
+      background-color: pink;
+      grid-template-columns: repeat(3, 1fr);
+      height: $train_height;
+
+      .train {
+        &.left {
+          grid-column: 1 / 2;
+          background-color: #0f0;
+        }
+
+        &.middle {
+          grid-column: 2 / 3;
+          background-color: #00f;
+        }
+
+        &.right {
+          grid-column: 3 / 4;
+          background-color: #f00;
+        }
+      }
+    }
   }
 }

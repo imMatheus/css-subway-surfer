@@ -6,6 +6,29 @@ html(lang="en")
     title Document
     link(rel="stylesheet", href="style.css")
   body
+    .tester-l
+    .tester-m
+    .tester-r
+    .test-display
     .train-container
-        - for (let i = 0; i < 30; i++)
-          .train
+        .train-inner
+            //- - const trains = [ 'l','l', 'r', 'm', 'lm', 'l', 'l','r', 'm', 'l', 'l', 'lm','r'].reverse()
+            - const trains = [ 'l', 'r', 'm', 'r', 'l'].reverse()
+              each train in trains
+                if train === 'l'
+                  .train-row 
+                    .train.left
+                else if train === 'm'
+                  .train-row 
+                    .train.middle
+                else if train === 'r'
+                  .train-row 
+                    .train.right
+                else if train === 'lm'
+                  .train-row 
+                    .train.left
+                    .train.middle
+                else if train === 'rm'
+                  .train-row 
+                    .train.middle
+                    .train.right
