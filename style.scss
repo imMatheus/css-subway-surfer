@@ -1,12 +1,14 @@
 @use 'sass:math';
 @use 'sass:list';
 
-$animation_time: 18s;
+$animation_time: 25s;
 $animation_delay: 0s;
 $train_height: 300px;
-$train_size: 500px;
-$trains: l, r, m, r, l;
-// $trains: l, l, r, m, lm, l, l, r, m, l, l, lm, r;
+$train_container_size: 500px;
+// $trains: l, r, m, r, l;
+$trains: l l r m lm l l r m l l lm r l l r;
+// $trains: l, l, r, m, lm, l, l, r, m, l, l, lm, r, l, l, r;
+
 :root {
   --train-l: black;
   --train-m: black;
@@ -28,12 +30,10 @@ body {
 }
 
 @keyframes c-l {
-  @for $i from 1 through length($trains) {
-    $train: nth($trains, $i);
-    $percentage: math.div(100, length($trains)) * ($i - 1);
-    $percentage-2: math.div(100, length($trains)) * $i;
-    #{$percentage}%,
-    #{$percentage-2}% {
+  @for $i from 1 through list.length($trains) {
+    $train: list.nth($trains, $i);
+    $percentage: math.div(100, list.length($trains)) * ($i - 1);
+    #{$percentage}% {
       @if $train == l {
         --train-l: blue;
       } @else if $train == lm {
@@ -49,11 +49,9 @@ body {
 
 @keyframes c-m {
   @for $i from 1 through list.length($trains) {
-    $train: nth($trains, $i);
+    $train: list.nth($trains, $i);
     $percentage: math.div(100, list.length($trains)) * ($i - 1);
-    $percentage-2: math.div(100, list.length($trains)) * $i;
-    #{$percentage}%,
-    #{$percentage-2}% {
+    #{$percentage}% {
       @if $train == m {
         --train-m: blue;
       } @else if $train == lm {
@@ -69,11 +67,9 @@ body {
 
 @keyframes c-r {
   @for $i from 1 through list.length($trains) {
-    $train: nth($trains, $i);
+    $train: list.nth($trains, $i);
     $percentage: math.div(100, list.length($trains)) * ($i - 1);
-    $percentage-2: math.div(100, list.length($trains)) * $i;
-    #{$percentage}%,
-    #{$percentage-2}% {
+    #{$percentage}% {
       @if $train == r {
         --train-r: blue;
       } @else if $train == lr {
@@ -136,20 +132,20 @@ body {
 @keyframes train-animation {
   0% {
     transform: translateY(
-      $train_size + $train_height * -1 * list.length($trains)
+      $train_container_size + 150px + $train_height * -1 * list.length($trains)
     );
   }
 
   100% {
-    transform: translateY($train_size);
+    transform: translateY($train_container_size + 150px);
   }
 }
 
 .train-container {
   background-color: blueviolet;
   position: absolute;
-  height: $train_size;
-  width: $train_size;
+  height: $train_container_size;
+  width: $train_container_size;
   top: 50%;
   left: 50%;
   overflow: hidden;

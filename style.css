@@ -13,60 +13,159 @@
 }
 
 body {
-  animation: 18s linear;
+  animation: 25s linear;
   animation-name: c-l, c-m, c-r;
   animation-delay: 0s;
 }
 
 @keyframes c-l {
-  0%, 20% {
+  0% {
     --train-l: blue;
   }
-  20%, 40% {
-    --train-l: black;
-  }
-  40%, 60% {
-    --train-l: black;
-  }
-  60%, 80% {
-    --train-l: black;
-  }
-  80%, 100% {
+  6.25% {
     --train-l: blue;
+  }
+  12.5% {
+    --train-l: black;
+  }
+  18.75% {
+    --train-l: black;
+  }
+  25% {
+    --train-l: blue;
+  }
+  31.25% {
+    --train-l: blue;
+  }
+  37.5% {
+    --train-l: blue;
+  }
+  43.75% {
+    --train-l: black;
+  }
+  50% {
+    --train-l: black;
+  }
+  56.25% {
+    --train-l: blue;
+  }
+  62.5% {
+    --train-l: blue;
+  }
+  68.75% {
+    --train-l: blue;
+  }
+  75% {
+    --train-l: black;
+  }
+  81.25% {
+    --train-l: blue;
+  }
+  87.5% {
+    --train-l: blue;
+  }
+  93.75% {
+    --train-l: black;
   }
 }
 @keyframes c-m {
-  0%, 20% {
+  0% {
     --train-m: black;
   }
-  20%, 40% {
+  6.25% {
     --train-m: black;
   }
-  40%, 60% {
+  12.5% {
+    --train-m: black;
+  }
+  18.75% {
     --train-m: blue;
   }
-  60%, 80% {
+  25% {
+    --train-m: blue;
+  }
+  31.25% {
     --train-m: black;
   }
-  80%, 100% {
+  37.5% {
+    --train-m: black;
+  }
+  43.75% {
+    --train-m: black;
+  }
+  50% {
+    --train-m: blue;
+  }
+  56.25% {
+    --train-m: black;
+  }
+  62.5% {
+    --train-m: black;
+  }
+  68.75% {
+    --train-m: blue;
+  }
+  75% {
+    --train-m: black;
+  }
+  81.25% {
+    --train-m: black;
+  }
+  87.5% {
+    --train-m: black;
+  }
+  93.75% {
     --train-m: black;
   }
 }
 @keyframes c-r {
-  0%, 20% {
+  0% {
     --train-r: black;
   }
-  20%, 40% {
+  6.25% {
+    --train-r: black;
+  }
+  12.5% {
     --train-r: blue;
   }
-  40%, 60% {
+  18.75% {
     --train-r: black;
   }
-  60%, 80% {
+  25% {
+    --train-r: black;
+  }
+  31.25% {
+    --train-r: black;
+  }
+  37.5% {
+    --train-r: black;
+  }
+  43.75% {
     --train-r: blue;
   }
-  80%, 100% {
+  50% {
     --train-r: black;
+  }
+  56.25% {
+    --train-r: black;
+  }
+  62.5% {
+    --train-r: black;
+  }
+  68.75% {
+    --train-r: black;
+  }
+  75% {
+    --train-r: blue;
+  }
+  81.25% {
+    --train-r: black;
+  }
+  87.5% {
+    --train-r: black;
+  }
+  93.75% {
+    --train-r: blue;
   }
 }
 .tester-l {
@@ -116,10 +215,10 @@ body {
 }
 @keyframes train-animation {
   0% {
-    transform: translateY(-1000px);
+    transform: translateY(-4150px);
   }
   100% {
-    transform: translateY(500px);
+    transform: translateY(650px);
   }
 }
 .train-container {
@@ -133,7 +232,7 @@ body {
   transform: translate(-50%, -50%);
 }
 .train-container .train-inner {
-  animation: train-animation 18s linear forwards;
+  animation: train-animation 25s linear forwards;
   animation-delay: 0s;
 }
 .train-container .train-inner .train-row {
