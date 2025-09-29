@@ -5,9 +5,7 @@ $animation_time: 25s;
 $animation_delay: 0s;
 $train_height: 300px;
 $train_container_size: 500px;
-// $trains: l, r, m, r, l;
-$trains: l l r m lm l l r m l l lm r l l r;
-// $trains: l, l, r, m, lm, l, l, r, m, l, l, lm, r, l, l, r;
+$trains: l l r m r r l m l l lm r l l r;
 
 :root {
   --train-l: black;
@@ -196,7 +194,7 @@ body {
     position: relative;
 
     &:has(input:checked) {
-      background-color: green;
+      // background-color: green;
     }
 
     input {
@@ -207,17 +205,17 @@ body {
   }
 }
 
-.player {
+.player-wrapper {
   position: absolute;
   height: 100px;
-  width: 100px;
+  width: $train_container_size / 3;
   background-color: white;
   bottom: 10px;
-  transform: translate(50%, 0%);
+  transition: left 0.05s ease-out;
 }
 
 body:has(#move-l:checked) {
-  .player {
+  .player-wrapper {
     left: 0%;
   }
 
@@ -249,7 +247,7 @@ body:has(#move-l:checked) {
 }
 
 body:has(#move-m:checked) {
-  .player {
+  .player-wrapper {
     left: (math.div(1, 3) * 100%);
   }
 
@@ -279,7 +277,7 @@ body:has(#move-m:checked) {
 }
 
 body:has(#move-r:checked) {
-  .player {
+  .player-wrapper {
     left: (math.div(1, 3) * 100% * 2);
   }
 

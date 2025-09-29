@@ -19,8 +19,7 @@ html(lang="en")
         input(type="radio" name="player-move" value="r" id="move-r")
     .train-container
         .train-inner
-            //- - const trains = [ 'l', 'r', 'm', 'r', 'l'].reverse()
-            - const trains = ['l','l', 'r', 'm', 'lm', 'l', 'l','r', 'm', 'l', 'l', 'lm','r','l','l', 'r'].reverse()
+            - const trains = ['l','l', 'r', 'm', 'r', 'r','l', 'm', 'l', 'l', 'lm','r','l','l', 'r'].reverse()
               each train in trains
                 if train === 'l'
                   .train-row 
@@ -39,4 +38,4 @@ html(lang="en")
                   .train-row 
                     .train.middle
                     .train.right
-        .player
+        .player-wrapper

@@ -22,49 +22,46 @@ body {
   0% {
     --train-l: blue;
   }
-  6.25% {
+  6.6666666667% {
     --train-l: blue;
   }
-  12.5% {
+  13.3333333333% {
     --train-l: black;
   }
-  18.75% {
+  20% {
     --train-l: black;
   }
-  25% {
-    --train-l: blue;
-  }
-  31.25% {
-    --train-l: blue;
-  }
-  37.5% {
-    --train-l: blue;
-  }
-  43.75% {
+  26.6666666667% {
     --train-l: black;
   }
-  50% {
+  33.3333333333% {
     --train-l: black;
   }
-  56.25% {
+  40% {
     --train-l: blue;
   }
-  62.5% {
-    --train-l: blue;
-  }
-  68.75% {
-    --train-l: blue;
-  }
-  75% {
+  46.6666666667% {
     --train-l: black;
   }
-  81.25% {
+  53.3333333333% {
     --train-l: blue;
   }
-  87.5% {
+  60% {
     --train-l: blue;
   }
-  93.75% {
+  66.6666666667% {
+    --train-l: blue;
+  }
+  73.3333333333% {
+    --train-l: black;
+  }
+  80% {
+    --train-l: blue;
+  }
+  86.6666666667% {
+    --train-l: blue;
+  }
+  93.3333333333% {
     --train-l: black;
   }
 }
@@ -72,49 +69,46 @@ body {
   0% {
     --train-m: black;
   }
-  6.25% {
+  6.6666666667% {
     --train-m: black;
   }
-  12.5% {
+  13.3333333333% {
     --train-m: black;
   }
-  18.75% {
+  20% {
     --train-m: blue;
   }
-  25% {
+  26.6666666667% {
+    --train-m: black;
+  }
+  33.3333333333% {
+    --train-m: black;
+  }
+  40% {
+    --train-m: black;
+  }
+  46.6666666667% {
     --train-m: blue;
   }
-  31.25% {
+  53.3333333333% {
     --train-m: black;
   }
-  37.5% {
+  60% {
     --train-m: black;
   }
-  43.75% {
-    --train-m: black;
-  }
-  50% {
+  66.6666666667% {
     --train-m: blue;
   }
-  56.25% {
+  73.3333333333% {
     --train-m: black;
   }
-  62.5% {
+  80% {
     --train-m: black;
   }
-  68.75% {
-    --train-m: blue;
-  }
-  75% {
+  86.6666666667% {
     --train-m: black;
   }
-  81.25% {
-    --train-m: black;
-  }
-  87.5% {
-    --train-m: black;
-  }
-  93.75% {
+  93.3333333333% {
     --train-m: black;
   }
 }
@@ -122,49 +116,46 @@ body {
   0% {
     --train-r: black;
   }
-  6.25% {
+  6.6666666667% {
     --train-r: black;
   }
-  12.5% {
+  13.3333333333% {
     --train-r: blue;
   }
-  18.75% {
+  20% {
     --train-r: black;
   }
-  25% {
-    --train-r: black;
-  }
-  31.25% {
-    --train-r: black;
-  }
-  37.5% {
-    --train-r: black;
-  }
-  43.75% {
+  26.6666666667% {
     --train-r: blue;
   }
-  50% {
-    --train-r: black;
-  }
-  56.25% {
-    --train-r: black;
-  }
-  62.5% {
-    --train-r: black;
-  }
-  68.75% {
-    --train-r: black;
-  }
-  75% {
+  33.3333333333% {
     --train-r: blue;
   }
-  81.25% {
+  40% {
     --train-r: black;
   }
-  87.5% {
+  46.6666666667% {
     --train-r: black;
   }
-  93.75% {
+  53.3333333333% {
+    --train-r: black;
+  }
+  60% {
+    --train-r: black;
+  }
+  66.6666666667% {
+    --train-r: black;
+  }
+  73.3333333333% {
+    --train-r: blue;
+  }
+  80% {
+    --train-r: black;
+  }
+  86.6666666667% {
+    --train-r: black;
+  }
+  93.3333333333% {
     --train-r: blue;
   }
 }
@@ -210,7 +201,7 @@ body {
 
 @keyframes train-animation {
   0% {
-    transform: translateY(-4150px);
+    transform: translateY(-3850px);
   }
   100% {
     transform: translateY(650px);
@@ -266,25 +257,22 @@ body {
   width: 100px;
   position: relative;
 }
-.player-controls .player-move-btn:has(input:checked) {
-  background-color: green;
-}
 .player-controls .player-move-btn input {
   display: none;
   width: 0px;
   position: absolute;
 }
 
-.player {
+.player-wrapper {
   position: absolute;
   height: 100px;
-  width: 100px;
+  width: 166.6666666667px;
   background-color: white;
   bottom: 10px;
-  transform: translate(50%, 0%);
+  transition: left 0.05s ease-out;
 }
 
-body:has(#move-l:checked) .player {
+body:has(#move-l:checked) .player-wrapper {
   left: 0%;
 }
 body:has(#move-l:checked) #move-l-label {
@@ -308,7 +296,7 @@ body:has(#move-l:checked) #move-r-label {
   display: none;
 }
 
-body:has(#move-m:checked) .player {
+body:has(#move-m:checked) .player-wrapper {
   left: 33.3333333333%;
 }
 body:has(#move-m:checked) #move-l-label:before {
@@ -329,7 +317,7 @@ body:has(#move-m:checked) #move-r-label:before {
   transform: translate(-50%, -50%);
 }
 
-body:has(#move-r:checked) .player {
+body:has(#move-r:checked) .player-wrapper {
   left: 66.6666666667%;
 }
 body:has(#move-r:checked) #move-l-label {
