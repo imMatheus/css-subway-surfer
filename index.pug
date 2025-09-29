@@ -10,6 +10,13 @@ html(lang="en")
     .tester-m
     .tester-r
     .test-display
+    .player-controls
+      label.player-move-btn(for="move-l", id="move-l-label")
+        input(type="radio" name="player-move" value="l" id="move-l")
+      label.player-move-btn(for="move-m", id="move-m-label")
+        input(type="radio" name="player-move" value="m" id="move-m" checked)
+      label.player-move-btn(for="move-r", id="move-r-label")
+        input(type="radio" name="player-move" value="r" id="move-r")
     .train-container
         .train-inner
             //- - const trains = [ 'l', 'r', 'm', 'r', 'l'].reverse()
@@ -32,3 +39,4 @@ html(lang="en")
                   .train-row 
                     .train.middle
                     .train.right
+        .player

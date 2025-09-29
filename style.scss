@@ -123,12 +123,6 @@ body {
   display: none; // hide by default
 }
 
-@container style(--train-l: pink) {
-  .test-display {
-    display: block;
-  }
-}
-
 @keyframes train-animation {
   0% {
     transform: translateY(
@@ -178,6 +172,177 @@ body {
           background-color: #f00;
         }
       }
+    }
+  }
+}
+
+.player-controls {
+  border: 1px solid black;
+  position: absolute;
+
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(math.div($train_container_size, 2) + 20px));
+
+  display: flex;
+  gap: 10px;
+
+  .player-move-btn {
+    flex: 1;
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    position: relative;
+
+    &:has(input:checked) {
+      background-color: green;
+    }
+
+    input {
+      display: none;
+      width: 0px;
+      position: absolute;
+    }
+  }
+}
+
+.player {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  bottom: 10px;
+  transform: translate(50%, 0%);
+}
+
+body:has(#move-l:checked) {
+  .player {
+    left: 0%;
+  }
+
+  #move-l-label {
+    opacity: 0.4;
+
+    &:before {
+      content: '<-';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  #move-m-label {
+    &:before {
+      content: '->';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  #move-r-label {
+    display: none;
+  }
+}
+
+body:has(#move-m:checked) {
+  .player {
+    left: (math.div(1, 3) * 100%);
+  }
+
+  #move-l-label {
+    &:before {
+      content: '<-';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  #move-m-label {
+    display: none;
+  }
+
+  #move-r-label {
+    &:before {
+      content: '->';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+body:has(#move-r:checked) {
+  .player {
+    left: (math.div(1, 3) * 100% * 2);
+  }
+
+  #move-l-label {
+    display: none;
+  }
+
+  #move-m-label {
+    &:before {
+      content: '<-';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  #move-r-label {
+    opacity: 0.4;
+    &:before {
+      content: '->';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// Losing state
+
+@container style(--train-l: blue) {
+  body:has(#move-l:checked) {
+    .train-inner {
+      animation-play-state: paused;
+    }
+
+    .test-display {
+      display: block;
+    }
+  }
+}
+
+@container style(--train-m: blue) {
+  body:has(#move-m:checked) {
+    .train-inner {
+      animation-play-state: paused;
+    }
+
+    .test-display {
+      display: block;
+    }
+  }
+}
+
+@container style(--train-r: blue) {
+  body:has(#move-r:checked) {
+    .train-inner {
+      animation-play-state: paused;
+    }
+
+    .test-display {
+      display: block;
     }
   }
 }

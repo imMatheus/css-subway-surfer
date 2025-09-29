@@ -208,11 +208,6 @@ body {
   display: none;
 }
 
-@container style(--train-l: pink) {
-  .test-display {
-    display: block;
-  }
-}
 @keyframes train-animation {
   0% {
     transform: translateY(-4150px);
@@ -252,6 +247,135 @@ body {
 .train-container .train-inner .train-row .train.right {
   grid-column: 3/4;
   background-color: #f00;
+}
+
+.player-controls {
+  border: 1px solid black;
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 270px);
+  display: flex;
+  gap: 10px;
+}
+.player-controls .player-move-btn {
+  flex: 1;
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+.player-controls .player-move-btn:has(input:checked) {
+  background-color: green;
+}
+.player-controls .player-move-btn input {
+  display: none;
+  width: 0px;
+  position: absolute;
+}
+
+.player {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  bottom: 10px;
+  transform: translate(50%, 0%);
+}
+
+body:has(#move-l:checked) .player {
+  left: 0%;
+}
+body:has(#move-l:checked) #move-l-label {
+  opacity: 0.4;
+}
+body:has(#move-l:checked) #move-l-label:before {
+  content: "<-";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body:has(#move-l:checked) #move-m-label:before {
+  content: "->";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body:has(#move-l:checked) #move-r-label {
+  display: none;
+}
+
+body:has(#move-m:checked) .player {
+  left: 33.3333333333%;
+}
+body:has(#move-m:checked) #move-l-label:before {
+  content: "<-";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body:has(#move-m:checked) #move-m-label {
+  display: none;
+}
+body:has(#move-m:checked) #move-r-label:before {
+  content: "->";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body:has(#move-r:checked) .player {
+  left: 66.6666666667%;
+}
+body:has(#move-r:checked) #move-l-label {
+  display: none;
+}
+body:has(#move-r:checked) #move-m-label:before {
+  content: "<-";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body:has(#move-r:checked) #move-r-label {
+  opacity: 0.4;
+}
+body:has(#move-r:checked) #move-r-label:before {
+  content: "->";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@container style(--train-l: blue) {
+  body:has(#move-l:checked) .train-inner {
+    animation-play-state: paused;
+  }
+  body:has(#move-l:checked) .test-display {
+    display: block;
+  }
+}
+@container style(--train-m: blue) {
+  body:has(#move-m:checked) .train-inner {
+    animation-play-state: paused;
+  }
+  body:has(#move-m:checked) .test-display {
+    display: block;
+  }
+}
+@container style(--train-r: blue) {
+  body:has(#move-r:checked) .train-inner {
+    animation-play-state: paused;
+  }
+  body:has(#move-r:checked) .test-display {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
