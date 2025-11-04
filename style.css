@@ -12,7 +12,9 @@
   box-sizing: border-box;
 }
 
-body {
+.app-container {
+  height: 100vh;
+  width: 100vw;
   animation: 25s linear;
   animation-name: c-l, c-m, c-r;
   animation-delay: 0s;
@@ -342,26 +344,35 @@ body:has(#move-r:checked) #move-r-label:before {
 }
 
 @container style(--train-l: blue) {
-  body:has(#move-l:checked) .train-inner {
+  .app-container:has(#move-l:checked) {
+    animation-play-state: paused !important;
+  }
+  .app-container:has(#move-l:checked) .train-inner {
     animation-play-state: paused;
   }
-  body:has(#move-l:checked) .test-display {
+  .app-container:has(#move-l:checked) .test-display {
     display: block;
   }
 }
 @container style(--train-m: blue) {
-  body:has(#move-m:checked) .train-inner {
+  .app-container:has(#move-m:checked) {
+    animation-play-state: paused !important;
+  }
+  .app-container:has(#move-m:checked) .train-inner {
     animation-play-state: paused;
   }
-  body:has(#move-m:checked) .test-display {
+  .app-container:has(#move-m:checked) .test-display {
     display: block;
   }
 }
 @container style(--train-r: blue) {
-  body:has(#move-r:checked) .train-inner {
+  .app-container:has(#move-r:checked) {
+    animation-play-state: paused !important;
+  }
+  .app-container:has(#move-r:checked) .train-inner {
     animation-play-state: paused;
   }
-  body:has(#move-r:checked) .test-display {
+  .app-container:has(#move-r:checked) .test-display {
     display: block;
   }
 }

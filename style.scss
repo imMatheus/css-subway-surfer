@@ -21,7 +21,9 @@ $trains: l l r m r r l m l l lm r l l r;
   box-sizing: border-box;
 }
 
-body {
+.app-container {
+  height: 100vh;
+  width: 100vw;
   animation: $animation_time linear;
   animation-name: c-l, c-m, c-r;
   animation-delay: $animation_delay;
@@ -72,7 +74,7 @@ body {
         --train-r: blue;
       } @else if $train == lr {
         --train-r: blue;
-      } @else if $train == rl {
+      } @else if $train == mr {
         --train-r: blue;
       } @else {
         --train-r: black;
@@ -142,7 +144,6 @@ body {
   left: 50%;
   overflow: hidden;
   transform: translate(-50%, -50%);
-  // overflow: hidden;
 
   .train-inner {
     animation: train-animation $animation_time linear forwards;
@@ -208,7 +209,7 @@ body {
 .player-wrapper {
   position: absolute;
   height: 100px;
-  width: $train_container_size / 3;
+  width: math.div($train_container_size, 3);
   background-color: white;
   bottom: 10px;
   transition: left 0.05s ease-out;
@@ -308,9 +309,10 @@ body:has(#move-r:checked) {
 }
 
 // Losing state
-
 @container style(--train-l: blue) {
-  body:has(#move-l:checked) {
+  .app-container:has(#move-l:checked) {
+    animation-play-state: paused !important;
+
     .train-inner {
       animation-play-state: paused;
     }
@@ -322,7 +324,9 @@ body:has(#move-r:checked) {
 }
 
 @container style(--train-m: blue) {
-  body:has(#move-m:checked) {
+  .app-container:has(#move-m:checked) {
+    animation-play-state: paused !important;
+
     .train-inner {
       animation-play-state: paused;
     }
@@ -334,7 +338,9 @@ body:has(#move-r:checked) {
 }
 
 @container style(--train-r: blue) {
-  body:has(#move-r:checked) {
+  .app-container:has(#move-r:checked) {
+    animation-play-state: paused !important;
+
     .train-inner {
       animation-play-state: paused;
     }
