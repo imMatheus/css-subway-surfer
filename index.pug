@@ -6,36 +6,37 @@ html(lang="en")
     title CSS Subway Surfer
     link(rel="stylesheet", href="style.css")
   body
-    .tester-l
-    .tester-m
-    .tester-r
-    .test-display
-    .player-controls
-      label.player-move-btn(for="move-l", id="move-l-label")
-        input(type="radio" name="player-move" value="l" id="move-l")
-      label.player-move-btn(for="move-m", id="move-m-label")
-        input(type="radio" name="player-move" value="m" id="move-m" checked)
-      label.player-move-btn(for="move-r", id="move-r-label")
-        input(type="radio" name="player-move" value="r" id="move-r")
-    .train-container
-        .train-inner
-            - const trains = ['l','l', 'r', 'm', 'r', 'r','l', 'm', 'l', 'l', 'lm','r','l','l', 'r'].reverse()
-              each train in trains
-                if train === 'l'
-                  .train-row 
-                    .train.left
-                else if train === 'm'
-                  .train-row 
-                    .train.middle
-                else if train === 'r'
-                  .train-row 
-                    .train.right
-                else if train === 'lm'
-                  .train-row 
-                    .train.left
-                    .train.middle
-                else if train === 'rm'
-                  .train-row 
-                    .train.middle
-                    .train.right
-        .player-wrapper
+    .app-container
+      .tester-l
+      .tester-m
+      .tester-r
+      .test-display
+      .player-controls
+        label.player-move-btn(for="move-l", id="move-l-label")
+          input(type="radio" name="player-move" value="l" id="move-l")
+        label.player-move-btn(for="move-m", id="move-m-label")
+          input(type="radio" name="player-move" value="m" id="move-m" checked)
+        label.player-move-btn(for="move-r", id="move-r-label")
+          input(type="radio" name="player-move" value="r" id="move-r")
+      .train-container
+          .train-inner
+              - const trains = ['l','l', 'r', 'm', 'r', 'r','l', 'm', 'l', 'l', 'lm','r','l','l', 'r'].reverse()
+                each train in trains
+                  if train === 'l'
+                    .train-row 
+                      .train.left
+                  else if train === 'm'
+                    .train-row 
+                      .train.middle
+                  else if train === 'r'
+                    .train-row 
+                      .train.right
+                  else if train === 'lm'
+                    .train-row 
+                      .train.left
+                      .train.middle
+                  else if train === 'rm'
+                    .train-row 
+                      .train.middle
+                      .train.right
+          .player-wrapper
